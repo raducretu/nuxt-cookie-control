@@ -1,8 +1,8 @@
 <template>
   <ClientOnly>
     <iframe
-      :cookie-enabled="null"
       v-if="isCookieFunctionalEnabled"
+      :cookie-enabled="null"
       v-bind="$attrs"
     />
     <div v-else class="cookieControl__BlockedIframe">

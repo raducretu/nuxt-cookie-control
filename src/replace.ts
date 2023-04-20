@@ -4,14 +4,14 @@ const execSrcReplacements = (src: any, replacements: any[]) => {
       (typeof replacement.from === 'string' ||
         replacement.from instanceof RegExp) === false
     ) {
-      throw new Error(
+      throw new TypeError(
         "[vite-plugin-replace]: The replacement option 'from' is not of type 'string' or 'RegExp'."
       )
     } else if (
       (typeof replacement.to === 'string' ||
         replacement.to instanceof Function) === false
     ) {
-      throw new Error(
+      throw new TypeError(
         "[vite-plugin-replace]: The replacement option 'to' is not of type 'string' or 'Function'"
       )
     } else src = src.replace(replacement.from, replacement.to)
@@ -26,11 +26,11 @@ export const replaceCodePlugin = (config: any) => {
       replacements: [],
     }
   } else if ((typeof config === 'object' || config !== null) === false) {
-    throw new Error(
+    throw new TypeError(
       "[vite-plugin-replace]: The configuration is not of type 'Object'."
     )
   } else if (Array.isArray(config.replacements) === false) {
-    throw new Error(
+    throw new TypeError(
       "[vite-plugin-replace]: The configuration option 'replacement' is not of type 'Array'."
     )
   }
