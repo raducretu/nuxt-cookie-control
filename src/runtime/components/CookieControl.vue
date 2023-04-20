@@ -419,9 +419,12 @@ watch(isConsentGiven, (current, _previous) => {
   }
 })
 
-watch(() => props.locale, (locale) => {
-  useNuxtApp().$cookies.locale.value = locale
-})
+watch(
+  () => props.locale,
+  (locale) => {
+    useNuxtApp().$cookies.locale.value = locale
+  }
+)
 
 // initialization
 init()

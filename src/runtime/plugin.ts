@@ -42,7 +42,7 @@ export default defineNuxtPlugin((_nuxtApp) => {
     cookiesEnabledIds,
     isModalActive,
     moduleOptions,
-    locale
+    locale,
   } as State
 
   return {

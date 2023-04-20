@@ -75,7 +75,7 @@ const blockIframes = (moduleOptions: ModuleOptions) => {
       name: 'functional',
       initialState:
         typeof moduleOptions.isIframeBlocked !== 'boolean' &&
-          moduleOptions.isIframeBlocked.initialState !== undefined
+        moduleOptions.isIframeBlocked.initialState !== undefined
           ? moduleOptions.isIframeBlocked.initialState
           : true,
     }
@@ -102,16 +102,20 @@ const blockIframes = (moduleOptions: ModuleOptions) => {
       })
     })
 
-    extendViteConfig(config => {
+    extendViteConfig((config) => {
       config?.plugins?.push(
         replaceCodePlugin({
           replacements: [
             {
               from: /<iframe[^>]*.*|<\/iframe>/g,
-              to: (match: string) => match.includes('cookie-enabled') ?
-                match : match.replace(/<iframe/g, '<CookieIframe').replace(/iframe>/g, 'CookieIframe>')
-            }
-          ]
+              to: (match: string) =>
+                match.includes('cookie-enabled')
+                  ? match
+                  : match
+                      .replace(/<iframe/g, '<CookieIframe')
+                      .replace(/iframe>/g, 'CookieIframe>'),
+            },
+          ],
         })
       )
     })

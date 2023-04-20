@@ -1,6 +1,10 @@
 <template>
   <ClientOnly>
-    <iframe :cookie-enabled="null" v-if="isCookieFunctionalEnabled" v-bind="$attrs" />
+    <iframe
+      :cookie-enabled="null"
+      v-if="isCookieFunctionalEnabled"
+      v-bind="$attrs"
+    />
     <div v-else class="cookieControl__BlockedIframe">
       <p>
         {{ localeStrings?.iframeBlocked }}
@@ -28,6 +32,7 @@ const isCookieFunctionalEnabled = computed(
       (cookieEnabled: Cookie) => cookieEnabled.name === 'functional'
     ).length > 0
 )
-const localeStrings = computed(() => moduleOptions.localeTexts[useNuxtApp().$cookies.locale.value])
+const localeStrings = computed(
+  () => moduleOptions.localeTexts[useNuxtApp().$cookies.locale.value]
+)
 </script>
-
